@@ -10,6 +10,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.Select;
 
@@ -18,6 +19,8 @@ import com.facebook.TestBase.BaseClass;
 public class WebDriverUtility extends BaseClass {
 
 	static Select select;
+	
+	static Actions actions;
 	
 	static WebElement element;
 	
@@ -156,6 +159,13 @@ public class WebDriverUtility extends BaseClass {
 
 	public static void leaveFrameorAlert() {
 		driver.switchTo().defaultContent();
+	}
+	
+	public static void mouseRightClick(By locator)
+	{
+		element=driver.findElement(locator);
+		actions=new Actions(driver);
+		actions.contextClick(element).build().perform();
 	}
 	
 	public static void screenShot() {
